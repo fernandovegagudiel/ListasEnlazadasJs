@@ -74,19 +74,24 @@ countOccurrences(value) {
 }
 
  reverseInPlace() {
-    if (this._size <= 1) return;
-    let current = this.head;
-    let temp = null;
-    while (current !== null) {
-        temp = current.previous;
-        current.previous = current.next;
-        current.next = temp;
-        current = current.previous;
+  if (this.head === null || this.head.next === null) { // this y quité getNext
+      return;
     }
-    temp = this.head;
-    this.head = this.tail;
-    this.tail = temp;
+
+    let previous = null;    // let
+    let current = this.head; // let y this
+    this.tail = this.head;   // this
+
+    while (current !== null) {
+      let next = current.next;    // let y quité getNext
+      current.next = previous;    // quité setNext
+      previous = current;         
+      current = next;             
+    }
+
+    this.head = previous; // this
 }
+
 
   removeDuplicates() {
     throw new Error(
