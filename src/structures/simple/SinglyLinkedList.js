@@ -53,22 +53,25 @@ class SinglyLinkedList {
     return false;
   }
 
-  countOccurrences(value) {
-    let cont = 0;
+countOccurrences(value) {
+    let count = 0;
     let current = this.head;
     while (current !== null) {
-      if (this._isSameValue(current.value, value)) {
-        cont++;
-      }
-      current = current.next;
+        if (this._isSameValue(current.value, value)) {
+            count++;
+        }
+        current = current.next;
     }
+    return count;
+}
 
-
-  }
-
-  clean() {
-    throw new Error("TODO RETO: Implementar clean() en SinglyLinkedList.");
-  }
+ clean() {
+    let removedCount = this._size;
+    while (!this.isEmpty()) {
+        this.removeFirst();
+    }
+    return removedCount;
+}
 
   reverseInPlace() {
     throw new Error(
