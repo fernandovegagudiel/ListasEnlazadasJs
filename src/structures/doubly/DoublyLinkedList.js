@@ -101,10 +101,22 @@ class DoublyLinkedList {
 
 
   reverseInPlace() {
-    throw new Error(
-      "TODO RETO: Implementar reverseInPlace() en DoublyLinkedList."
-    );
-  }
+    let current = this.head;
+    let temp = null;
+
+    while (current !== null) {
+        temp = current.next;
+
+        current.next = current.previous;
+        current.previous = temp;
+
+        current = temp;
+    }
+
+    temp = this.head;
+    this.head = this.tail;
+    this.tail = temp;
+}
 
   removeDuplicates() {
     throw new Error(
