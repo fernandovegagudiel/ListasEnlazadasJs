@@ -107,7 +107,7 @@ countOccurrences(value) {
           runnerPrevious.next = runner.next; 
           
           if (runner === this.tail) {        
-            this.tail = runnerPrevious;      // actualizar referencia al último nodo
+            this.tail = runnerPrevious;      
           }
           
           this._size--;                      
