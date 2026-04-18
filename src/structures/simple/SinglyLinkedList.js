@@ -94,10 +94,37 @@ countOccurrences(value) {
 
 
   removeDuplicates() {
-    throw new Error(
-      "TODO RETO: Implementar removeDuplicates() en SinglyLinkedList."
-    );
-  }
+    let removed = 0;              
+    let current = this.head;      
+
+    while (current !== null) {
+      let runnerPrevious = current; 
+      let runner = current.next;    
+
+      while (runner !== null) {
+        // comparar valores con el nodo actual usando helper interno
+        if (this._isSameValue(current.value, runner.value)) {
+          runnerPrevious.next = runner.next; 
+          
+          if (runner === this.tail) {        
+            this.tail = runnerPrevious;      // actualizar referencia al último nodo
+          }
+          
+          this._size--;                      
+          removed++;
+          runner = runnerPrevious.next;      
+        } else {
+          runnerPrevious = runner;
+          runner = runner.next;              
+        }
+      }
+
+      current = current.next;                
+    }
+
+    return removed;                          // devolver número de duplicados eliminados
+}
+
 
   size() {
     return this._size;
